@@ -4,7 +4,7 @@ import {
 	FiCalendar,
 	FiUsers,
 	FiTrendingUp,
-	FiSettings,
+    FiUser
 } from "react-icons/fi";
 import { IoIosLogOut } from "react-icons/io";
 import { NavLink, useLocation } from "react-router-dom";
@@ -47,8 +47,8 @@ const Sidebar = ({ open }) => {
 						to="/profile"
 						className={`flex items-center gap-3 rounded-md hover:bg-gray-800 p-4 cursor-pointer ${location.pathname === '/profile' && 'bg-gray-800'}`}
 					>
-						<FiSettings />
-						<span>Settings</span>
+						<FiUser />
+						<span>Profile</span>
 					</NavLink>
 				</ul>
 				<NavLink className="flex items-center gap-3 rounded-md hover:bg-gray-800 p-4 cursor-pointer" to='/'>

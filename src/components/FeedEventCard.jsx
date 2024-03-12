@@ -7,7 +7,7 @@ import { TfiInfoAlt } from "react-icons/tfi";
 const FeedEventCard = ({ id, img, title, organization, date, time }) => {
     const [like, setLike] = useState(false);
 	return (
-		<div className="w-fit flex flex-col sm:flex-row items-center p-4 border border-gray-300 shadow-md hover:shadow-xl rounded-xl cursor-pointer">
+		<div className="w-fit flex flex-col sm:flex-row gap-4 items-center p-4 border border-gray-300 shadow-md hover:shadow-xl rounded-xl cursor-pointer">
 			<img
 				src={img}
 				alt={`${title}-img`}

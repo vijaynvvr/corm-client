@@ -36,7 +36,7 @@ const App = () => {
                     <Route path='/events' element={<Events />} />
                     <Route path='/organizations' element={<Orgs />} />
                     <Route path='/opportunities' element={<Opportunities />} />
-                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/profile' element={<Profile email='vijayvardhansn10@gmail.com' firstName='Vijay Vardhan Reddy' lastName='Nandikonda' bio='Computer Science Undergrad. Willing to Connect, Learn and Grow together.'/>} />
                 </Routes>
             </div>
 		</div>
