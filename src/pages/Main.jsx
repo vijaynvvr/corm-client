@@ -12,14 +12,14 @@ const Main = () => {
 				<span className="text-7xl animate-pulse">
 					<FiCodesandbox />
 				</span>
-				<h1 className="w-8/12 text-5xl font-semibold">
+				<h1 className="w-full lg:w-8/12 text-5xl font-semibold">
 					A one-stop university based social platform
 				</h1>
 				<p className="text-xl text-gray-500 italic">
 					Never miss any events and opportunities at your university.
 				</p>
 			</div>
-			<div className="flex gap-16">
+			<div className="flex flex-col lg:flex-row gap-16">
 				<HeroCard
 					link="/events"
 					path={event}
