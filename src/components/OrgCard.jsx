@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const OrgCard = ({ path, orgName, about }) => {
+const OrgCard = ({ id, path, orgName, about }) => {
 	return (
-		<div className="flex flex-col sm:flex-row gap-4 w-full xl:w-8/12 cursor-pointer border rounded-xl shadow-lg hover:shadow-xl">
+		<Link to={`/organizations/${id}`}  className="flex flex-col sm:flex-row gap-4 w-full xl:w-8/12 cursor-pointer border rounded-xl shadow-lg hover:shadow-xl">
 			<img
 				src={path}
 				alt={`${orgName}-name`}
@@ -12,7 +13,7 @@ const OrgCard = ({ path, orgName, about }) => {
 				<h1 className="font-bold">{orgName}</h1>
 				<p className="text-base text-gray-600">{about}</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

@@ -9,8 +9,8 @@ import EventCard from "../components/EventCard";
 const Events = () => {
 	return (
 		<div className="p-4 space-y-6 w-full">
-			<h1 className="text-4xl">Events</h1>
-			<div className="flex">
+			<h1 className="text-4xl text-center">Events</h1>
+			<div className="flex justify-center">
 				<input
 					type="text"
 					placeholder="Search for events..."
@@ -20,8 +20,8 @@ const Events = () => {
 					<FiSearch />
 				</button>
 			</div>
-            <h1 className="font-bold">Speaker Sessions</h1>
-			<div className="flex flex-wrap gap-4">
+            <h1 className="font-bold text-center">Speaker Sessions</h1>
+			<div className="flex flex-wrap justify-center gap-4">
 				<EventCard
                     id={2}
 					img={organization}
@@ -32,7 +32,7 @@ const Events = () => {
 				/>
 				<EventCard
                     id={2}
-					img={organization}
+					img={opportunity}
 					title="Web Development Workshop"
 					organization="Google Developer Student Club"
                     date="12 May, 2024"
@@ -47,11 +47,19 @@ const Events = () => {
                     time="5 mins ago"
 				/>
 			</div>
-            <h1 className="font-bold">Workshops</h1>
-			<div className="flex gap-4">
+            <h1 className="font-bold text-center">Workshops</h1>
+			<div className="flex flex-wrap justify-center gap-4 overflow-x-auto">
 				<EventCard
                     id={1}
 					img={event}
+					title="Web Development Workshop"
+					organization="Google Developer Student Club"
+                    date="24 Mar, 2024"
+                    time="5 mins ago"
+				/>
+				<EventCard
+                    id={1}
+					img={opportunity}
 					title="Web Development Workshop"
 					organization="Google Developer Student Club"
                     date="24 Mar, 2024"
@@ -67,7 +75,7 @@ const Events = () => {
 				/>
 				<EventCard
                     id={2}
-					img={organization}
+					img={opportunity}
 					title="Web Development Workshop"
 					organization="Google Developer Student Club"
                     date="12 May, 2024"
@@ -82,8 +90,8 @@ const Events = () => {
                     time="5 mins ago"
 				/>
 			</div>
-            <h1 className="font-bold">Hackathons</h1>
-			<div className="flex flex-wrap gap-4">
+            <h1 className="font-bold text-center">Hackathons</h1>
+			<div className="flex flex-wrap justify-center gap-4">
 				<EventCard
                     id={1}
 					img={event}

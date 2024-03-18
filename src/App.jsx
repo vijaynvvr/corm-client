@@ -8,6 +8,8 @@ import Events from "./pages/Events";
 import Orgs from "./pages/Orgs";
 import Opportunities from "./pages/Opportunities";
 import Profile from "./pages/Profile";
+import EventDetail from "./pages/EventDetail";
+import OrgDetail from "./pages/OrgDetail";
 
 const App = () => {
     const [open, setOpen] = useState(true);
@@ -34,7 +36,9 @@ const App = () => {
                     <Route path='/' element={<Main />} />
                     <Route path='/feed' element={<Feed />} />
                     <Route path='/events' element={<Events />} />
+                    <Route path='/events/:id' element={<EventDetail />} />
                     <Route path='/organizations' element={<Orgs />} />
+                    <Route path='/organizations/:id' element={<OrgDetail />} />
                     <Route path='/opportunities' element={<Opportunities />} />
                     <Route path='/profile' element={<Profile email='vijayvardhansn10@gmail.com' firstName='Vijay Vardhan Reddy' lastName='Nandikonda' bio='Computer Science Undergrad. Willing to Connect, Learn and Grow together.'/>} />
                 </Routes>

@@ -9,7 +9,7 @@ const Main = () => {
 	return (
 		<div className="flex flex-grow flex-col gap-8 py-8 items-center text-center">
 			<div className="flex flex-col gap-6 items-center text-center">
-				<span className="text-7xl">
+				<span className="text-7xl animate-pulse">
 					<FiCodesandbox />
 				</span>
 				<h1 className="w-8/12 text-5xl font-semibold">

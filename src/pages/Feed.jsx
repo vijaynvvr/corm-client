@@ -8,7 +8,7 @@ import FeedEventCard from "../components/FeedEventCard";
 
 const Feed = () => {
 	return (
-		<div className="p-4 space-y-6 w-full flex flex-col items-center">
+		<div className="w-full p-4 space-y-6 flex flex-col items-center">
 			<h1 className="text-4xl">Hi Vijay! Welcome to CoRM!</h1>
 			<div className="flex flex-col flex-grow-0 gap-4">
 				<FeedEventCard

@@ -24,8 +24,8 @@ const Profile = ({email, firstName, lastName, bio}) => {
             <textarea className='border-2 border-black resize-none p-2' disabled={!edit} rows={3} value={bio} />
         </div>
         <div className='flex gap-8'>
-            <button onClick={() => setEdit(true)} className='px-4 py-2 bg-gray-300 hover:bg-gray-400 border-2 border-black rounded-xl'>Edit</button>
-            <button onClick={() => setEdit(false)} className='px-4 py-2 bg-black text-white rounded-xl'>Save</button>
+            <button onClick={() => setEdit(true)} className='px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-black rounded-xl'>Edit</button>
+            <button onClick={() => setEdit(false)} className='px-4 py-2 bg-gray-800 hover:bg-black text-white rounded-xl'>Save</button>
         </div>
     </div>
   )

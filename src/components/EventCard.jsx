@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiUsers, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
+import { BiCategory } from "react-icons/bi";
 import { TfiInfoAlt } from "react-icons/tfi";
 
 const EventCard = ({ id, img, title, organization, date, time }) => {
@@ -15,6 +16,10 @@ const EventCard = ({ id, img, title, organization, date, time }) => {
 			/>
 			<div className="p-2 space-y-2 rounded-b-xl">
 				<h3 className="font-bold">{title}</h3>
+                <p className="flex items-center justify-center gap-2 mx-3 text-base border-2 rounded-sm bg-gray-100 hover:bg-gray-200">
+                    <BiCategory />
+                    <span>Workshop</span>
+                </p>
 				<p className="flex items-center gap-2 text-base text-gray-600 hover:underline">
                     <FiUsers />
                     <span>{organization}</span>
