@@ -7,7 +7,7 @@ import { FiSearch } from "react-icons/fi";
 
 const Orgs = () => {
 	return (
-		<div className="w-full p-4 space-y-6">
+		<div className="w-full flex flex-col items-center p-4 space-y-6">
 			<h1 className="text-4xl">Organizations</h1>
 			<div className="flex">
 				<input
@@ -19,7 +19,7 @@ const Orgs = () => {
 					<FiSearch />
 				</button>
 			</div>
-			<div className="space-y-4">
+			<div className="flex flex-col items-center gap-4">
 				<OrgCard
                     id={1}
 					path={event}
