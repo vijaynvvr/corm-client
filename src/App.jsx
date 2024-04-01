@@ -10,6 +10,8 @@ import Opportunities from "./pages/Opportunities";
 import Profile from "./pages/Profile";
 import EventDetail from "./pages/EventDetail";
 import OrgDetail from "./pages/OrgDetail";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
     const [open, setOpen] = useState(true);
@@ -41,6 +43,8 @@ const App = () => {
                     <Route path='/organizations/:id' element={<OrgDetail />} />
                     <Route path='/opportunities' element={<Opportunities />} />
                     <Route path='/profile' element={<Profile email='vijayvardhansn10@gmail.com' firstName='Vijay Vardhan Reddy' lastName='Nandikonda' bio='Computer Science Undergrad. Willing to Connect, Learn and Grow together.'/>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
                 </Routes>
             </div>
 		</div>

@@ -10,7 +10,7 @@ const HeroCard = ({ link, path, title, desc }) => {
 			<img
 				src={path}
 				alt={`${title}-img`}
-				className="w-80 h-48 rounded-t-xl"
+				className="w-80 aspect-video rounded-t-xl"
 			/>
 			<div className="p-4 space-y-2 rounded-b-xl">
 				<h3 className="font-bold">{title}</h3>

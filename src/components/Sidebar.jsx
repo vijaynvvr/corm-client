@@ -19,7 +19,7 @@ const Sidebar = ({ open, setOpen }) => {
     }
 
 	return (
-		<div className={`w-72 ${open ? "block" : "hidden"} fixed lg:static`}>
+		<div className={`w-72 ${open ? "left-0" : "-left-60"} transition-all duration-500 fixed xl:static`}>
 			<div className="flex flex-col h-[calc(100vh-63px)] fixed justify-between py-4 px-6 bg-black text-white">
 				<ul className="space-y-4">
 					<li
