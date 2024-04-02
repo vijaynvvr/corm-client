@@ -28,14 +28,16 @@ const OrgAnalytics = () => {
     return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 items-center">
         <div className="w-96 m-auto">
-            <BarChart chartData={userData} />
+            <LineChart chartData={userData} />
         </div>
+
         <div className="w-72 m-auto">
             <PieChart chartData={userData} />
         </div>
         <div className="w-96 m-auto">
-            <LineChart chartData={userData} />
+            <BarChart chartData={userData} />
         </div>
+
         <div className="w-96 m-auto">
             <DoughnutChart chartData={userData} />
         </div>
