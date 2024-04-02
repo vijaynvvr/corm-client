@@ -3,7 +3,7 @@ import { UserData } from "./Data";
 import BarChart from '../../components/charts/BarChart';
 import LineChart from '../../components/charts/LineChart';
 import PieChart from '../../components/charts/PieChart';
-import DoughnutChart from '../../components/charts/DoughnutChart';
+import ScatterChart from '../../components/charts/ScatterChart';
 
 
 const OrgAnalytics = () => {
@@ -30,16 +30,14 @@ const OrgAnalytics = () => {
         <div className="w-96 m-auto">
             <LineChart chartData={userData} />
         </div>
-
         <div className="w-72 m-auto">
             <PieChart chartData={userData} />
         </div>
         <div className="w-96 m-auto">
             <BarChart chartData={userData} />
         </div>
-
         <div className="w-96 m-auto">
-            <DoughnutChart chartData={userData} />
+            <ScatterChart chartData={userData} />
         </div>
     </div>
     )
