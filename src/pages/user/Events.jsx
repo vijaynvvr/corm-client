@@ -1,14 +1,14 @@
 import React from "react";
-import event from "../assets/HeroCard/event.jpg";
-import organization from "../assets/HeroCard/organization.jpg";
-import opportunity from "../assets/HeroCard/opportunity.jpg";
+import event from "../../assets/HeroCard/event.jpg";
+import organization from "../../assets/HeroCard/organization.jpg";
+import opportunity from "../../assets/HeroCard/opportunity.jpg";
 import { FiSearch } from "react-icons/fi";
 
-import EventCard from "../components/EventCard";
+import EventCard from "../../components/EventCard";
 
 const Events = () => {
 	return (
-		<div className="p-4 space-y-6 w-full">
+		<div className="w-fullp-4 space-y-6">
 			<h1 className="text-4xl text-center">Events</h1>
 			<div className="flex justify-center">
 				<input

@@ -1,7 +1,7 @@
 import React from 'react'
-import organization from "../assets/HeroCard/organization.jpg";
-import EventCard from '../components/EventCard';
-import ProfileCard from '../components/ProfileCard';
+import organization from "../../assets/HeroCard/organization.jpg";
+import EventCard from '../../components/EventCard';
+import ProfileCard from '../../components/ProfileCard';
 
 
 const OrgDetail = () => {
@@ -14,7 +14,7 @@ const OrgDetail = () => {
 			</div>
             <img src={organization} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
         </div>
-        <div className='text-center space-x-4'>
+        <div className='w-10/12 text-center space-x-4'>
             <button className='bg-blue-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-blue-600'>Follow</button>
             <button className='bg-gray-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-gray-600'>Contact</button>
         </div>
@@ -37,7 +37,7 @@ const OrgDetail = () => {
                 </tbody>
             </table>
         </div>
-        <div className='space-y-4 w-10/12'>
+        <div className='w-10/12 space-y-4'>
             <h1 className='text-2xl font-semibold'>Upcoming Events</h1>
             <div className="flex flex-wrap gap-4">
 				<EventCard
@@ -50,7 +50,7 @@ const OrgDetail = () => {
 				/>
 			</div>
         </div>
-        <div className='space-y-4 w-10/12'>
+        <div className='w-10/12 space-y-4'>
             <h1 className='text-2xl font-semibold'>Previous Events</h1>
             <div className="flex flex-wrap gap-4">
 				<EventCard
@@ -79,7 +79,7 @@ const OrgDetail = () => {
 				/>
 			</div>
         </div>
-        <div className='space-y-4 w-10/12'>
+        <div className='w-10/12 space-y-4'>
             <h1 className='text-2xl font-semibold'>Organizers</h1>
             <div className="flex flex-wrap gap-4">
                 <ProfileCard />

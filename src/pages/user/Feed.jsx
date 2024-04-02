@@ -1,10 +1,10 @@
 import React from "react";
-import event from "../assets/HeroCard/event.jpg";
-import organization from "../assets/HeroCard/organization.jpg";
-import opportunity from "../assets/HeroCard/opportunity.jpg";
+import event from "../../assets/HeroCard/event.jpg";
+import organization from "../../assets/HeroCard/organization.jpg";
+import opportunity from "../../assets/HeroCard/opportunity.jpg";
 import { FiSearch } from "react-icons/fi";
 
-import FeedEventCard from "../components/FeedEventCard";
+import FeedEventCard from "../../components/FeedEventCard";
 
 const Feed = () => {
 	return (

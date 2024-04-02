@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from './Sidebar';
 
-const Protected = ({ redirectPath = "/login", open, setOpen }) => {
+const OrgAuth = ({ redirectPath = "/login", open, setOpen }) => {
     const loginStatus = useSelector(store => store.user.isLoggedIn)
+    const userMode = useSelector(store => store.user.userMode)
 
     useEffect(() => {
         const handleResize = () => {
@@ -23,6 +24,9 @@ const Protected = ({ redirectPath = "/login", open, setOpen }) => {
     if (!loginStatus) {
         return <Navigate to={redirectPath} replace />
     }
+    if (userMode !== "org") {
+        return <Navigate to={"/feed"} replace />
+    }
  
     return (
         <>
@@ -32,4 +36,4 @@ const Protected = ({ redirectPath = "/login", open, setOpen }) => {
     )
 }
 
-export default Protected;
+export default OrgAuth;

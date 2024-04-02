@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import event from "../assets/HeroCard/event.jpg"
+import event from "../../assets/HeroCard/event.jpg"
 
 
 const Profile = ({email, firstName, lastName, bio}) => {

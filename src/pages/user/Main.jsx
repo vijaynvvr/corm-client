@@ -1,9 +1,9 @@
 import React from "react";
 import { FiCodesandbox } from "react-icons/fi";
-import HeroCard from "../components/HeroCard";
-import event from "../assets/HeroCard/event.jpg";
-import organization from "../assets/HeroCard/organization.jpg";
-import opportunity from "../assets/HeroCard/opportunity.jpg";
+import HeroCard from "../../components/HeroCard";
+import event from "../../assets/HeroCard/event.jpg";
+import organization from "../../assets/HeroCard/organization.jpg";
+import opportunity from "../../assets/HeroCard/opportunity.jpg";
 
 const Main = () => {
 	return (

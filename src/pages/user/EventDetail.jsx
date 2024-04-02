@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import organization from "../assets/HeroCard/organization.jpg";
+import organization from "../../assets/HeroCard/organization.jpg";
 import { FiUsers, FiMapPin, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { IoSaveOutline, IoSaveSharp } from "react-icons/io5";

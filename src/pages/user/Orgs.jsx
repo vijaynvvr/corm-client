@@ -1,8 +1,8 @@
 import React from "react";
-import OrgCard from "../components/OrgCard";
-import event from "../assets/HeroCard/event.jpg";
-import organization from "../assets/HeroCard/organization.jpg";
-import opportunity from "../assets/HeroCard/opportunity.jpg";
+import OrgCard from "../../components/OrgCard";
+import event from "../../assets/HeroCard/event.jpg";
+import organization from "../../assets/HeroCard/organization.jpg";
+import opportunity from "../../assets/HeroCard/opportunity.jpg";
 import { FiSearch } from "react-icons/fi";
 
 const Orgs = () => {
