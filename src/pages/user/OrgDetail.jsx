@@ -80,7 +80,7 @@ const OrgDetail = () => {
 			</div>
         </div>
         <div className='w-10/12 space-y-4'>
-            <h1 className='text-2xl font-semibold'>Organizers</h1>
+            <h1 className='text-2xl font-semibold'>Team Members</h1>
             <div className="flex flex-wrap gap-4">
                 <ProfileCard />
                 <ProfileCard />

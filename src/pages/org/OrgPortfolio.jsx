@@ -28,14 +28,6 @@ const OrgPortfolio = () => {
 					className="w-full md:w-5/12 h-64 rounded-lg"
 				></img>
 			</div>
-			<div className="w-10/12 text-center space-x-4">
-				<button className="bg-blue-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-blue-600">
-					Follow
-				</button>
-				<button className="bg-gray-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-gray-600">
-					Contact
-				</button>
-			</div>
 			<div className="w-10/12 space-y-2 text-base">
 				<h1 className="text-2xl font-semibold">Organization Info</h1>
 				<table className="w-full border border-gray-400 text-center">
@@ -104,7 +96,7 @@ const OrgPortfolio = () => {
 				</div>
 			</div>
 			<div className="w-10/12 space-y-4">
-				<h1 className="text-2xl font-semibold">Organizers</h1>
+				<h1 className="text-2xl font-semibold">Team Members</h1>
 				<div className="flex flex-wrap gap-4">
 					<ProfileCard />
 					<ProfileCard />

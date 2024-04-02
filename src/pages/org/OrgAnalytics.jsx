@@ -5,7 +5,6 @@ import LineChart from '../../components/charts/LineChart';
 import PieChart from '../../components/charts/PieChart';
 import ScatterChart from '../../components/charts/ScatterChart';
 
-
 const OrgAnalytics = () => {
     const [userData, setUserData] = useState({
         labels: UserData.map((data) => data.year),

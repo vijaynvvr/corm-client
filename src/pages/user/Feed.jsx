@@ -27,7 +27,7 @@ const Feed = () => {
                     date="12 May, 2024"
                     time="2 min ago"
 				/>
-				{/* <FeedEventCard
+				<FeedEventCard
                     id={2}
 					img={opportunity}
 					title="Web Development Workshop"
@@ -35,7 +35,7 @@ const Feed = () => {
                     date="12 May, 2024"
                     time="2 min ago"
 				/>
-				<FeedEventCard
+				{/*<FeedEventCard
                     id={2}
 					img={organization}
 					title="Web Development Workshop"
