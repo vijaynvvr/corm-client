@@ -10,11 +10,12 @@ const Menu = ({menu}) => {
     const navigateTo = (id) => {
         dispatch(setOrgMode());
         dispatch(setOrgName(id))
-        navigate(`org/analytics/${id}`);
+        navigate(`org_profile/${id}/analytics`);
     }
 
     return (
         <div className={`${menu ? 'left-0' : 'left-56'} transition-all duration-500 bg-white border-2 w-[215px] max-h-[150px] overflow-y-auto z-10 flex flex-col absolute rounded-b-md`}>
+
             <button onClick={() => navigateTo("GDSC")} className="text-sm border-b border-white px-4 py-1 bg-black text-white hover:bg-gray-800 cursor-pointer">GDSC</button>
             <button onClick={() => navigateTo("COSC")} className="text-sm border-b border-white px-4 py-1 bg-black text-white hover:bg-gray-800 cursor-pointer">COSC</button>
             <button onClick={() => navigateTo("MUN")} className="text-sm border-b border-white px-4 py-1 bg-black text-white hover:bg-gray-800 cursor-pointer">MUN</button>

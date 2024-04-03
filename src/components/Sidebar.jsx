@@ -11,7 +11,7 @@ import {
 import { IoIosLogOut } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { handleLogin, setOrgName, setUserMode } from "../store/slices/userSlice";
+import { logoutHandler, setOrgName, setUserMode } from "../store/slices/userSlice";
 
 
 
@@ -31,11 +31,11 @@ const Sidebar = ({ open, setOpen }) => {
             {path: "/profile", title: "Profile", icon: FiUser},
         ],
         org: [
-            {path: `/org/analytics/${orgName}`, title: "Analytics", icon: FiPieChart},
-            {path: `/org/events/${orgName}`, title: "Events", icon: FiCalendar},
-            {path: `/org/opportunities/${orgName}`, title: "Opportunities", icon: FiTrendingUp},
-            {path: `/org/portfolio/${orgName}`, title: "Portfolio", icon: FiUser},
-            {path: `/org/settings/${orgName}`, title: "Settings", icon: FiSettings},
+            {path: `/org_profile/${orgName}/analytics`, title: "Analytics", icon: FiPieChart},
+            {path: `/org_profile/${orgName}/events`, title: "Events", icon: FiCalendar},
+            {path: `/org_profile/${orgName}/opportunities`, title: "Opportunities", icon: FiTrendingUp},
+            {path: `/org_profile/${orgName}/portfolio`, title: "Portfolio", icon: FiUser},
+            {path: `/org_profile/${orgName}/settings`, title: "Settings", icon: FiSettings},
         ]
     }
 
@@ -65,7 +65,7 @@ const Sidebar = ({ open, setOpen }) => {
                 {userMode === "user" ? (
                     <li
                         onClick={() => {
-                            dispatch(handleLogin(false));
+                            dispatch(logoutHandler());
                         }}
                         className="flex items-center gap-3 rounded-md hover:bg-gray-800 p-4 cursor-pointer"
                     >

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Routes, Route} from "react-router-dom";
 
 import Header from "./components/Header";
@@ -23,10 +23,20 @@ import OrgEvents from "./pages/org/OrgEvents";
 import OrgOpportunities from "./pages/org/OrgOpportunities";
 import OrgPortfolio from "./pages/org/OrgPortfolio";
 import OrgSettings from "./pages/org/OrgSettings";
+import { useDispatch } from "react-redux";
+import { loginHandler } from "./store/slices/userSlice";
 
 const App = () => {
     
     const [open, setOpen] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user && user.access_token) {
+            dispatch(loginHandler({ data: user }))
+        }
+    }, []);
 
 	return (
 		<div className="flex flex-col min-h-screen text-xl overflow-x-hidden">
@@ -45,14 +55,14 @@ const App = () => {
                         <Route path='/organizations' element={<Orgs />} />
                         <Route path='/organizations/:id' element={<OrgDetail />} />
                         <Route path='/opportunities' element={<Opportunities />} />
-                        <Route path='/profile' element={<Profile email='vijayvardhansn10@gmail.com' firstName='Vijay Vardhan Reddy' lastName='Nandikonda' bio='Computer Science Undergrad. Willing to Connect, Learn and Grow together.'/>} />
+                        <Route path='/profile' element={<Profile />} />
                     </Route>
                     <Route element={<OrgAuth open={open} setOpen={setOpen} />}>
-                        <Route path="/org/analytics/:id" element={<OrgAnalytics />}></Route>
-                        <Route path="/org/events/:id" element={<OrgEvents />}></Route>
-                        <Route path="/org/opportunities/:id" element={<OrgOpportunities />}></Route>
-                        <Route path="/org/portfolio/:id" element={<OrgPortfolio />}></Route>
-                        <Route path="/org/settings/:id" element={<OrgSettings />}></Route>
+                        <Route path="/org_profile/:id/analytics" element={<OrgAnalytics />}></Route>
+                        <Route path="/org_profile/:id/events" element={<OrgEvents />}></Route>
+                        <Route path="/org_profile/:id/opportunities" element={<OrgOpportunities />}></Route>
+                        <Route path="/org_profile/:id/portfolio" element={<OrgPortfolio />}></Route>
+                        <Route path="/org_profile/:id/settings" element={<OrgSettings />}></Route>
                     </Route>
                 </Routes>
             </div>
