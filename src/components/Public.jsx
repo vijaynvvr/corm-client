@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
 const Public = ({ redirectPath = "/feed" }) => {
-    const loginStatus = useSelector(state => state.user.isLoggedIn)
+    const loginStatus = useSelector(store => store.user.isLoggedIn)
 
     if (loginStatus) {
         return <Navigate to={redirectPath} replace />

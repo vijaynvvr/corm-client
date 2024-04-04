@@ -27,7 +27,6 @@ import { useDispatch } from "react-redux";
 import { loginHandler } from "./store/slices/userSlice";
 
 const App = () => {
-    
     const [open, setOpen] = useState(false);
     const dispatch = useDispatch();
 

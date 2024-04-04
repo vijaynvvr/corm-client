@@ -41,7 +41,7 @@ const Login = () => {
                 dispatch(loginHandler({
                     data: data.user
                 }))
-                navigate('/login');
+                navigate('/feed');
             } else {
                 toast.error(data.message);
             }
