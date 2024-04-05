@@ -11,16 +11,14 @@ import {
 import { IoIosLogOut } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { logoutHandler, setOrgName, setUserMode } from "../store/slices/userSlice";
-
+import { logoutHandler, setOrgMode } from "../store/slices/userSlice";
 
 
 const Sidebar = ({ open, setOpen }) => {
 	const location = useLocation();
     const navigate = useNavigate();
-    const userMode = useSelector(store => store.user.userMode)
     const dispatch = useDispatch();
-    const orgName = useSelector(store => store.user.orgName);
+    const activeOrg = useSelector(store => store.user.activeOrg);
 
     const SIDEBAR_ITEMS = {
         user: [
@@ -31,25 +29,24 @@ const Sidebar = ({ open, setOpen }) => {
             {path: "/profile", title: "Profile", icon: FiUser},
         ],
         org: [
-            {path: `/org_profile/${orgName}/analytics`, title: "Analytics", icon: FiPieChart},
-            {path: `/org_profile/${orgName}/events`, title: "Events", icon: FiCalendar},
-            {path: `/org_profile/${orgName}/opportunities`, title: "Opportunities", icon: FiTrendingUp},
-            {path: `/org_profile/${orgName}/portfolio`, title: "Portfolio", icon: FiUser},
-            {path: `/org_profile/${orgName}/settings`, title: "Settings", icon: FiSettings},
+            {path: `/org_profile/${activeOrg?._id}/analytics`, title: "Analytics", icon: FiPieChart},
+            {path: `/org_profile/${activeOrg?._id}/events`, title: "Events", icon: FiCalendar},
+            {path: `/org_profile/${activeOrg?._id}/opportunities`, title: "Opportunities", icon: FiTrendingUp},
+            {path: `/org_profile/${activeOrg?._id}/portfolio`, title: "Portfolio", icon: FiUser},
+            {path: `/org_profile/${activeOrg?._id}/settings`, title: "Settings", icon: FiSettings},
         ]
     }
 
+    const items =  SIDEBAR_ITEMS[activeOrg ? "org" : "user"];
 
     const navigateTo = (path) => {
         navigate(path);
         if (window.innerWidth < 1280 && open) setOpen(false);
     }
 
-    const items = SIDEBAR_ITEMS[userMode];
-
 	return (
 		<div className={`w-72 ${open ? "left-0" : "-left-60"} transition-all duration-500 fixed xl:static`}>
-			<div className={`flex flex-col h-[calc(100vh-63px)] fixed justify-between py-4 px-6 ${userMode === "user" ? "bg-black" : "bg-gray-900"} bg-black text-white`}>
+			<div className={`flex flex-col h-[calc(100vh-63px)] fixed justify-between py-4 px-6 ${!activeOrg ? "bg-black" : "bg-gray-900"} bg-black text-white`}>
 				<ul className="space-y-4">
                     {items.map((item, index) => (
                         <li
@@ -62,7 +59,7 @@ const Sidebar = ({ open, setOpen }) => {
                         </li>
                     ))}
 				</ul>
-                {userMode === "user" ? (
+                {!activeOrg ? (
                     <li
                         onClick={() => {
                             dispatch(logoutHandler());
@@ -74,10 +71,7 @@ const Sidebar = ({ open, setOpen }) => {
                     </li>
                 ) : (
                     <li
-                        onClick={() => {
-                            dispatch(setUserMode());
-                            dispatch(setOrgName(null));
-                        }}
+                        onClick={() => dispatch(setOrgMode(null))}
                         className="flex items-center gap-3 rounded-md hover:bg-gray-800 p-4 cursor-pointer"
                     >
                         <IoIosLogOut />

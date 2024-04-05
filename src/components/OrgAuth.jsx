@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 
 const OrgAuth = ({ redirectPath = "/login", open, setOpen }) => {
     const loginStatus = useSelector(store => store.user.isLoggedIn)
-    const userMode = useSelector(store => store.user.userMode)
+    const activeOrg = useSelector(store => store.user.activeOrg)
 
     useEffect(() => {
         const handleResize = () => {
@@ -24,7 +24,7 @@ const OrgAuth = ({ redirectPath = "/login", open, setOpen }) => {
     if (!loginStatus) {
         return <Navigate to={redirectPath} replace />
     }
-    if (userMode !== "org") {
+    if (!activeOrg) {
         return <Navigate to={"/feed"} replace />
     }
  

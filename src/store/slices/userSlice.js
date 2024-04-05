@@ -5,16 +5,14 @@ const userSlice = createSlice({
   initialState: {
     data: null,
     isLoggedIn: false,
-    userMode: null,
     orgPrezList: [],
-    orgName: null
+    activeOrg: null
   },
   reducers: {
     loginHandler: (state, action) => {
         localStorage.setItem("user", JSON.stringify(action.payload.data));
         state.data = action.payload.data;
         state.isLoggedIn = true;
-        state.userMode = "user";
         state.orgPrezList = action.payload.data.orgPrezList;
     },
     updateUser: (state, action) => {
@@ -30,20 +28,14 @@ const userSlice = createSlice({
             isLoggedIn: false,
             userMode: null,
             orgPrezList: [],
-            orgName: null
+            activeOrg: null
         }
     },
-    setOrgMode: (state) => {
-        state.userMode = "org"
-    },
-    setUserMode: (state) => {
-        state.userMode = "user"
-    },
-    setOrgName: (state, action) => {
-        state.orgName = action.payload;
+    setOrgMode: (state, action) => {
+        state.activeOrg = action.payload
     }
   },
 });
 
-export const { loginHandler, updateUser, logoutHandler, setOrgMode, setUserMode, setOrgName } = userSlice.actions;
+export const { loginHandler, updateUser, logoutHandler, setOrgMode } = userSlice.actions;
 export default userSlice.reducer;

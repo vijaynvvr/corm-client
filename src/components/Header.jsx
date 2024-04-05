@@ -10,8 +10,7 @@ const Header = ({ open, setOpen }) => {
     const [menu, setMenu] = useState(false)
     const menuRef = useRef(null);
     const loginStatus = useSelector(store => store.user.isLoggedIn)
-    const userMode = useSelector(store => store.user.userMode)
-    const orgName = useSelector(store => store.user.orgName)
+    const activeOrg = useSelector(store => store.user.activeOrg)
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -36,7 +35,7 @@ const Header = ({ open, setOpen }) => {
                             <Link to="/" className="xl:flex hidden items-center gap-2">
                                 <img src={logo} alt="corm-logo" className="w-10"/>
                                 <li className="text-3xl font-bold">
-                                    {userMode === "user" ? "CoRM" : orgName}
+                                    {!activeOrg ? "CoRM" : activeOrg.name}
                                 </li>
                             </Link>
                         </>

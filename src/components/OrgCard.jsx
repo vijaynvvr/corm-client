@@ -7,7 +7,7 @@ const OrgCard = ({ id, path, orgName, about }) => {
 			<img
 				src={path}
 				alt={`${orgName}-name`}
-				className="w-full sm:w-3/12 rounded-l-xl"
+				className="w-full sm:w-3/12 aspect-video rounded-l-xl"
 			/>
 			<div className="space-y-2 p-2">
 				<h1 className="font-bold">{orgName}</h1>
