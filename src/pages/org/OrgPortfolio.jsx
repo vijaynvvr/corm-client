@@ -5,6 +5,8 @@ import ProfileCard from '../../components/ProfileCard';
 import { useLocation  } from 'react-router-dom';
 import api from "../../api";
 
+import sample_logo from "../../assets/user_profile.jpg";
+
 
 const OrgPortfolio = () => {
     const location = useLocation();
@@ -124,7 +126,7 @@ const OrgPortfolio = () => {
 			<div className="w-10/12 space-y-4">
 				<h1 className="text-2xl font-semibold">Team Members</h1>
 				<div className="flex flex-wrap gap-4">
-                    <ProfileCard logo={orgData?.president?.logo} name={orgData?.president?.firstName}/>
+                    <ProfileCard logo={orgData?.president?.logo ? orgData?.president?.logo : sample_logo} name={orgData?.president?.firstName}/>
 				</div>
 			</div>
 		</div>
