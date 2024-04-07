@@ -4,7 +4,7 @@ import { FiUsers, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { BiCategory } from "react-icons/bi";
 import { TfiInfoAlt } from "react-icons/tfi";
-import { formatDate, timeAgo } from "../../../corm-client-admin/src/utils/date_time_format";
+import { formatDate, timeAgo } from "../utils/date_time_format";
 
 const EventCard = ({ id, img, title, category, organization, date, time }) => {
     const [like, setLike] = useState(false);
