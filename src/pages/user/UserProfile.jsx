@@ -63,7 +63,7 @@ const UserProfile = () => {
                 </li>
                 <li>
                     <p className='font-medium'>Skills</p>
-                    {user.skills.length ? (
+                    {user.skills?.length ? (
                         <p className='text-gray-500'>{user.skills.join(" ")}</p>
                     ) : (
                         <p className='text-gray-500 md:text-center'>Not filled</p>
