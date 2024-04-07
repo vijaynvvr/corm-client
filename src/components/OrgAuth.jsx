@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import Sidebar from './Sidebar';
 
 const OrgAuth = ({ redirectPath = "/login", open, setOpen }) => {
     const loginStatus = useSelector(store => store.user.isLoggedIn)
     const activeOrg = useSelector(store => store.user.activeOrg)
+    const { pathname } = useLocation();
 
     useEffect(() => {
         const handleResize = () => {
@@ -22,12 +23,13 @@ const OrgAuth = ({ redirectPath = "/login", open, setOpen }) => {
     // }, []);
 
     if (!loginStatus) {
-        return <Navigate to={redirectPath} replace />
+        return <Navigate to={redirectPath} state={pathname} replace />
     }
+
     if (!activeOrg) {
         return <Navigate to={"/feed"} replace />
     }
- 
+
     return (
         <>
             <Sidebar open={open} setOpen={setOpen}/>

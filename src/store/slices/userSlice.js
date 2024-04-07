@@ -32,6 +32,11 @@ const userSlice = createSlice({
         }
     },
     setOrgMode: (state, action) => {
+        if (action.payload) {
+            localStorage.setItem("activeOrg", JSON.stringify(action.payload))
+        } else {
+            localStorage.removeItem("activeOrg")
+        }
         state.activeOrg = action.payload
     }
   },

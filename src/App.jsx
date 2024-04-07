@@ -13,9 +13,10 @@ import Feed from "./pages/user/Feed";
 import Events from "./pages/user/Events";
 import Orgs from "./pages/user/Orgs";
 import Opportunities from "./pages/user/Opportunities";
-import Profile from "./pages/user/Profile";
 import EventDetail from "./pages/user/EventDetail";
 import OrgDetail from "./pages/user/OrgDetail";
+import UserProfile from "./pages/user/UserProfile";
+import EditProfile from "./pages/user/EditProfile";
 
 import OrgAuth from "./components/OrgAuth";
 import OrgAnalytics from "./pages/org/OrgAnalytics";
@@ -24,7 +25,7 @@ import OrgOpportunities from "./pages/org/OrgOpportunities";
 import OrgPortfolio from "./pages/org/OrgPortfolio";
 import OrgSettings from "./pages/org/OrgSettings";
 import { useDispatch } from "react-redux";
-import { loginHandler } from "./store/slices/userSlice";
+import { loginHandler, setOrgMode } from "./store/slices/userSlice";
 
 const App = () => {
     const [open, setOpen] = useState(false);
@@ -32,8 +33,10 @@ const App = () => {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"));
+        const activeOrg = JSON.parse(localStorage.getItem("activeOrg"));
         if (user && user.access_token) {
             dispatch(loginHandler({ data: user }))
+            dispatch(setOrgMode(activeOrg))
         }
     }, []);
 
@@ -54,7 +57,8 @@ const App = () => {
                         <Route path='/organizations' element={<Orgs />} />
                         <Route path='/organizations/:id' element={<OrgDetail />} />
                         <Route path='/opportunities' element={<Opportunities />} />
-                        <Route path='/profile' element={<Profile />} />
+                        <Route path='/profile' element={<UserProfile />} />
+                        <Route path='/profile/edit' element={<EditProfile />} />
                     </Route>
                     <Route element={<OrgAuth open={open} setOpen={setOpen} />}>
                         <Route path="/org_profile/:id/analytics" element={<OrgAnalytics />}></Route>

@@ -2,14 +2,16 @@ import React from "react";
 import event from "../../assets/HeroCard/event.jpg";
 import organization from "../../assets/HeroCard/organization.jpg";
 import opportunity from "../../assets/HeroCard/opportunity.jpg";
-import { FiSearch } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 import FeedEventCard from "../../components/FeedEventCard";
 
 const Feed = () => {
-	return (
+    const user = useSelector(store => store.user.data)
+
+    return (
 		<div className="w-full p-4 space-y-6 flex flex-col items-center">
-			<h1 className="text-4xl">Hi Vijay! Welcome to CoRM!</h1>
+			<h1 className="text-4xl">Hey {user.firstName}, Welcome to CoRM!</h1>
 			<div className="flex flex-col flex-grow-0 gap-4">
 				<FeedEventCard
                     id={1}

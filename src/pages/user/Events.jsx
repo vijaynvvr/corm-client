@@ -8,7 +8,7 @@ import EventCard from "../../components/EventCard";
 
 const Events = () => {
 	return (
-		<div className="w-fullp-4 space-y-6">
+		<div className="w-full p-4 space-y-6">
 			<h1 className="text-4xl text-center">Events</h1>
 			<div className="flex justify-center">
 				<input

@@ -32,10 +32,10 @@ const Header = ({ open, setOpen }) => {
                             >
                                 {open ? <FiDelete /> : <FiMenu />}
                             </button>
-                            <Link to="/" className="xl:flex hidden items-center gap-2">
+                            <Link to={!activeOrg ? "/feed" : null} className="xl:flex hidden items-center gap-2">
                                 <img src={logo} alt="corm-logo" className="w-10"/>
                                 <li className="text-3xl font-bold">
-                                    {!activeOrg ? "CoRM" : activeOrg.name}
+                                    {!activeOrg ? "CoRM" : activeOrg.acronym}
                                 </li>
                             </Link>
                         </>
