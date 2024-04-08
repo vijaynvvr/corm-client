@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import organization from "../../assets/HeroCard/organization.jpg";
 import EventCard from '../../components/EventCard';
 import ProfileCard from '../../components/ProfileCard';
 import { useLocation  } from 'react-router-dom';
 import api from '../../api';
+import sample_logo from '../../assets/user_profile.jpg';
 
 const OrgDetail = () => {
     const location = useLocation();
     const orgId = location.pathname.split("/")[2]
-    const [orgData, setOrgData] = useState([]);
+    const [orgData, setOrgData] = useState(null);
     const [events, setEvents] = useState({
         previous: [],
         upcoming: []
@@ -43,14 +43,16 @@ const OrgDetail = () => {
         fetchOrgData();
     }, []);
 
+    if (!orgData) return <p>Loading...</p>
+
     return (
         <div className='w-full py-4 flex flex-col gap-8 items-center'>
             <div className='w-10/12 flex flex-col-reverse md:flex-row gap-8'>
                 <div className="w-full md:w-7/12 py-4 space-y-2 rounded-b-xl">
-                    <h3 className="font-bold text-2xl md:text-3xl">{orgData?.name}</h3>
-                    <p className='text-base md:text-lg'>{orgData?.about}</p>
+                    <h3 className="font-bold text-2xl md:text-3xl">{orgData.name}</h3>
+                    <p className='text-base md:text-lg'>{orgData.about}</p>
                 </div>
-                <img src={orgData?.logo} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
+                <img src={orgData.logo.url} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
             </div>
             <div className='w-10/12 text-center space-x-4'>
                 <button onClick={followOrg} className='bg-blue-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-blue-600'>Follow</button>
@@ -70,11 +72,11 @@ const OrgDetail = () => {
                     </thead>
                     <tbody>
                         <tr className='bg-gray-100'>
-                            <td className="py-2">{orgData?.visits?.length}</td>
-                            <td className='py-2'>{orgData?.followers?.length}</td>
-                            <td className='py-2'>{orgData?.members?.length}</td>
-                            <td className='py-2'>{orgData?.events?.length}</td>
-                            <td className='py-2'>{orgData?.type}</td>
+                            <td className="py-2">{orgData.visits.length}</td>
+                            <td className='py-2'>{orgData.followers.length}</td>
+                            <td className='py-2'>{orgData.members.length}</td>
+                            <td className='py-2'>{orgData.events.length}</td>
+                            <td className='py-2'>{orgData.type}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -87,10 +89,10 @@ const OrgDetail = () => {
                             <EventCard
                                 key={event._id}
                                 id={event._id}
-                                img={event.logo}
+                                img={event.logo.url}
                                 title={event.title}
                                 category={event.category}
-                                organization={organization.name}
+                                organization={orgData.name}
                                 date={event.eventTime}
                                 time={event.createdAt}
                             />
@@ -108,7 +110,7 @@ const OrgDetail = () => {
                             <EventCard
                                 key={event._id}
                                 id={event._id}
-                                img={event.logo}
+                                img={event.logo.url}
                                 title={event.title}
                                 category={event.category}
                                 organization={orgData.name}
@@ -124,7 +126,7 @@ const OrgDetail = () => {
             <div className='w-10/12 space-y-4'>
                 <h1 className='text-2xl font-semibold'>Team Members</h1>
                 <div className="flex flex-wrap gap-4">
-                    <ProfileCard logo={orgData?.president?.logo} name={orgData?.president?.firstName}/>
+                    <ProfileCard logo={orgData.president.logo.url ? orgData.president.logo.url : sample_logo} name={orgData.president.firstName}/>
                 </div>
             </div>
         </div>

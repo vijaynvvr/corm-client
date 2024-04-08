@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState} from 'react'
 import { useLocation  } from 'react-router-dom';
+import { formatDate, timeAgo } from '../../utils/date_time_format';
 import { FiUsers, FiMapPin, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { IoSaveOutline, IoSaveSharp } from "react-icons/io5";
 import api from '../../api';
-import { formatDate, timeAgo } from '../../utils/date_time_format';
 
-const EventDetail = () => {
+const OrgEventDetail = () => {
     const [like, setLike] = useState(false);
     const [register, setRegister] = useState(false);
     const location = useLocation();
-    const eventId = location.pathname.split("/")[2]
+    const eventId = location.pathname.split("/")[4]
     const [eventData, setEventData] = useState(null);
 
     useEffect(() => {
@@ -107,4 +107,4 @@ const EventDetail = () => {
     )
 }
 
-export default EventDetail
+export default OrgEventDetail;

@@ -5,8 +5,10 @@ import { GoHeart, GoHeartFill } from "react-icons/go";
 import { BiCategory } from "react-icons/bi";
 import { TfiInfoAlt } from "react-icons/tfi";
 import { formatDate, timeAgo } from "../utils/date_time_format";
+import { useSelector } from "react-redux";
 
 const EventCard = ({ id, img, title, category, organization, date, time }) => {
+    const activeOrg = useSelector(store => store.user.activeOrg);
     const [like, setLike] = useState(false);
 	return (
 		<div className="flex flex-col items-center px-1 py-2 border border-gray-300 shadow-md hover:shadow-xl rounded-xl cursor-pointer">
@@ -49,7 +51,7 @@ const EventCard = ({ id, img, title, category, organization, date, time }) => {
                             </>
                         )}
                     </button>
-                    <Link to={`/events/${id}`} className="w-[50%] flex justify-center items-center gap-3 text-lg border-2 rounded-r-lg hover:bg-yellow-100">
+                    <Link to={activeOrg ? `/org_profile/${activeOrg._id}/events/${id}` : `/events/${id}`} className="w-[50%] flex justify-center items-center gap-3 text-lg border-2 rounded-r-lg hover:bg-yellow-100">
                         <TfiInfoAlt className="text-yellow-500"/>
                         <span>Visit</span>
                     </Link>

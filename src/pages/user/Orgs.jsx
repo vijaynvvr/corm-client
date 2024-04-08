@@ -36,7 +36,7 @@ const Orgs = () => {
 						<OrgCard
 							key={org._id}
 							id={org._id}
-							path={org.logo}
+							path={org.logo.url}
 							orgName={org.name}
 							about={org.about}
 						/>

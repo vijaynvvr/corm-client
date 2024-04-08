@@ -22,7 +22,7 @@ const UserProfile = () => {
     return (
         <div className='w-full md:w-10/12 mx-auto space-y-6 p-4'>
             <div className='flex flex-col gap-4 items-center justify-center'>
-                <img className='w-72 aspect-square rounded-full' src={user.logo ? user.logo : sample_logo} alt="demo-img" />
+                <img className='w-72 aspect-square rounded-full' src={user.logo.url ? user.logo.url : sample_logo} alt="demo-img" />
                 <div className='space-y-4 text-center'>
                     <div className='space-y-1'>
                         <h1 className='text-3xl font-medium'>{user.firstName}</h1>
@@ -81,7 +81,7 @@ const UserProfile = () => {
                             <OrgProfileCard
                                 key={org._id}
                                 id={org._id}
-                                path={org.logo}
+                                path={org.logo.url}
                                 orgName={org.name}
                                 about={org.about}
                                 fetchOrgList={fetchOrgList}

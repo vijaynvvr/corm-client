@@ -38,9 +38,15 @@ const userSlice = createSlice({
             localStorage.removeItem("activeOrg")
         }
         state.activeOrg = action.payload
-    }
+    },
+    updateOrg: (state, action) => {
+        const existingOrg = state.activeOrg;
+        const updatedOrg = {...existingOrg, ...action.payload.data}
+        localStorage.setItem("activeOrg", JSON.stringify(updatedOrg))
+        state.activeOrg = updatedOrg
+    },
   },
 });
 
-export const { loginHandler, updateUser, logoutHandler, setOrgMode } = userSlice.actions;
+export const { loginHandler, updateUser, logoutHandler, setOrgMode, updateOrg } = userSlice.actions;
 export default userSlice.reducer;

@@ -13,6 +13,10 @@ api.interceptors.request.use(
             config.headers['User-Id'] = `${user.id}`;
             config.headers['User-Email'] = `${user.email}`;
         }
+        const activeOrg = JSON.parse(localStorage.getItem('activeOrg'));
+        if (activeOrg) {
+            config.headers['Active-Org-Id'] = `${activeOrg._id}`;
+        }
         return Promise.resolve(config);
     },
     (error) => {

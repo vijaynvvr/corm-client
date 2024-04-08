@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 
 const Protected = ({ redirectPath = "/login", open, setOpen }) => {
     const loginStatus = useSelector(store => store.user.isLoggedIn)
+    const activeOrg = useSelector(store => store.user.activeOrg)
     const {pathname} = useLocation();
 
     useEffect(() => {
@@ -23,6 +24,10 @@ const Protected = ({ redirectPath = "/login", open, setOpen }) => {
 
     if (!loginStatus) {
         return <Navigate to={redirectPath} state={pathname} replace />
+    }
+
+    if (activeOrg) {
+        return <Navigate to={`/org_profile/${activeOrg._id}/analytics`} replace />
     }
  
     return (

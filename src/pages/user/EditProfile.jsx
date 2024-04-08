@@ -12,7 +12,7 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const user = useSelector(store => store.user.data);
     const [logoPreview, setLogoPreview] = useState({
-        image: user.logo ? user.logo : sample_logo,
+        image: user.logo.url ? user.logo.url : sample_logo,
         edited: false
     });
     const [userData, setUserData] = useState({
@@ -80,7 +80,7 @@ const EditProfile = () => {
                 ...prevUserData,
                 gender: data.user.gender ? data.user.gender : "",
                 branch: data.user.branch ? data.user.branch : "",
-                logo: data.user.logo ? data.user.logo : "",
+                logo: data.user.logo.url ? data.user.logo.url : "",
             }));
 		};
 		fetchUserData();
@@ -109,10 +109,10 @@ const EditProfile = () => {
                         </>
                     ) : (
                         <>
-                            <label htmlFor="imageInput" className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer">
+                            <label htmlFor="logo" className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer">
                                 <IoAddCircleOutline className="text-green-500 text-4xl" />
                             </label>
-                            <input id="imageInput" type="file" accept=".png, .jpg, .jpeg" className="hidden" onChange={handleLogoChange} />
+                            <input id="logo" type="file" accept=".png, .jpg, .jpeg" className="hidden" onChange={handleLogoChange} />
                         </>
                     )}
                     {!logoPreview.edited && (

@@ -26,6 +26,10 @@ import OrgPortfolio from "./pages/org/OrgPortfolio";
 import OrgSettings from "./pages/org/OrgSettings";
 import { useDispatch } from "react-redux";
 import { loginHandler, setOrgMode } from "./store/slices/userSlice";
+import OrgCreateEvent from "./pages/org/OrgCreateEvent";
+import OrgEventDetail from "./pages/org/OrgEventDetail";
+import OrgEditEvent from "./pages/org/OrgEditEvent";
+import OrgEventAttendees from "./pages/org/OrgEventAttendees";
 
 const App = () => {
     const [open, setOpen] = useState(false);
@@ -63,6 +67,10 @@ const App = () => {
                     <Route element={<OrgAuth open={open} setOpen={setOpen} />}>
                         <Route path="/org_profile/:id/analytics" element={<OrgAnalytics />}></Route>
                         <Route path="/org_profile/:id/events" element={<OrgEvents />}></Route>
+                        <Route path="/org_profile/:id/events/create" element={<OrgCreateEvent />}></Route>
+                        <Route path="/org_profile/:id/events/:id/" element={<OrgEventDetail />}></Route>
+                        <Route path="/org_profile/:id/events/:id/edit" element={<OrgEditEvent />}></Route>
+                        <Route path="/org_profile/:id/events/:id/attendees" element={<OrgEventAttendees />}></Route>
                         <Route path="/org_profile/:id/opportunities" element={<OrgOpportunities />}></Route>
                         <Route path="/org_profile/:id/portfolio" element={<OrgPortfolio />}></Route>
                         <Route path="/org_profile/:id/settings" element={<OrgSettings />}></Route>

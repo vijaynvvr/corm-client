@@ -1,18 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiUsers, FiCalendar, FiClock } from "react-icons/fi";
-import { FiMoreVertical } from "react-icons/fi";
+import { FiUsers, FiCalendar, FiClock, FiMoreVertical } from "react-icons/fi";
 import EventDropdown from "./EventDropdown";
+import { formatDate, timeAgo } from "../utils/date_time_format";
 
 
-const FeedEventCard = ({ id, img, title, organization, date, time }) => {
-    const [like, setLike] = useState(false);
-    const [menu, setMenu] = useState(false);
+const OrgEventCard = ({ id, img, title, organization, date, time }) => {
+    const [menu, setMenu] = useState(null);
     const menuRef = useRef(null);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) setMenu(false);
+            if (menuRef.current && !menuRef.current.contains(event.target)) setMenu(null);
         };
         window.addEventListener("click", handleClickOutside);
         return () => window.removeEventListener("click", handleClickOutside);
@@ -31,24 +30,20 @@ const FeedEventCard = ({ id, img, title, organization, date, time }) => {
                         <FiUsers />
                         <span>{organization}</span>
                     </p>
-                    <p className="flex justify-between text-sm text-gray-800">
+                    <p className="flex gap-4 justify-between text-sm text-gray-800">
                         <span className="flex items-center gap-2">
                             <FiCalendar /> 
-                            <span>{date}</span>
+                            <span>{formatDate(date)}</span>
                         </span>
                         <span className="flex items-center gap-2">
                             <FiClock /> 
-                            <span>{time}</span>
+                            <span>{timeAgo(time)}</span>
                         </span>
                     </p>
-                    {/* <Link to={`/events/${id}`} className="w-[50%] flex justify-center items-center gap-3 text-lg border-2 rounded-r-lg hover:bg-yellow-100">
-                        <TfiInfoAlt className="text-yellow-500"/>
-                        <span>Visit</span>
-                    </Link> */}
                 </div>
 			</div>
             <div className="relative" ref={menuRef}>
-                <button onClick={() => setMenu(prevState => !prevState)} className="relative h-fit aspect-square p-2 m-4 hover:bg-gray-100 rounded-full">
+                <button onClick={() => setMenu(prevState => prevState ? null : id)} className="relative h-fit aspect-square p-2 m-4 hover:bg-gray-100 rounded-full">
                     <FiMoreVertical />
                 </button>
                 <EventDropdown menu={menu}/>
@@ -57,4 +52,4 @@ const FeedEventCard = ({ id, img, title, organization, date, time }) => {
 	);
 }
 
-export default FeedEventCard;
+export default OrgEventCard;
