@@ -12,7 +12,7 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const user = useSelector(store => store.user.data);
     const [logoPreview, setLogoPreview] = useState({
-        image: user.logo.url ? user.logo.url : sample_logo,
+        image: user.logo ? user.logo.url : sample_logo,
         edited: false
     });
     const [userData, setUserData] = useState({
@@ -79,7 +79,7 @@ const EditProfile = () => {
                 ...prevUserData,
                 gender: data.user.gender ? data.user.gender : "",
                 branch: data.user.branch ? data.user.branch : "",
-                logo: data.user.logo.url ? data.user.logo.url : "",
+                logo: data.user.logo ? data.user.logo.url : "",
             }));
 		};
 		fetchUserData();
