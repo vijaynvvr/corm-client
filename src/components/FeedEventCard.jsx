@@ -4,6 +4,7 @@ import { FiUsers, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { TfiInfoAlt } from "react-icons/tfi";
 import sample_event_logo from "../assets/event_sample_logo.jpeg"
+import { formatDate, timeAgo } from "../utils/date_time_format";
 
 const FeedEventCard = ({ id, logo, title, organizer, eventTime, createdAt }) => {
     const [like, setLike] = useState(false);
@@ -23,11 +24,11 @@ const FeedEventCard = ({ id, logo, title, organizer, eventTime, createdAt }) => 
 				<p className="flex justify-between text-sm text-gray-800">
                     <span className="flex items-center gap-2">
                         <FiCalendar /> 
-                        <span>{eventTime}</span>
+                        <span>{formatDate(eventTime)}</span>
                     </span>
                     <span className="flex items-center gap-2">
                         <FiClock /> 
-                        <span>{createdAt}</span>
+                        <span>{timeAgo(createdAt)}</span>
                     </span>
                 </p>
                 <div className="flex pt-2">

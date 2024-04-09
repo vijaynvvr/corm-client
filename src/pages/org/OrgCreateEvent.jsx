@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import sample_logo from '../../assets/event_sample_logo.jpeg';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
+import { tags } from "../../utils/tags"
 
 const OrgCreateEvent = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const OrgCreateEvent = () => {
 		venue: "",
 		eventTime: "",
 		mode: "",
-		tag: "",
+		tag: [],
 		category: "",
         organizer: activeOrg._id,
 		logo: null,
@@ -194,7 +195,9 @@ const OrgCreateEvent = () => {
 						<option value="" disabled hidden>
 							Select event tag
 						</option>
-						<option value="In-Person">In-Person</option>
+                        {tags.map(tag => (
+                            <option key={tag} value={tag}>{tag}</option>
+                        ))}
 					</select>
 					<label htmlFor="category">Event Category</label>
 					<select

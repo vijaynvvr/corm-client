@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import toast from 'react-hot-toast';
 import sample_event_logo from "../../assets/event_sample_logo.jpeg";
 import api from "../../api";
+import { tags } from "../../utils/tags"
 
 const OrgEditEvent = () => {
 	const navigate = useNavigate();
@@ -225,7 +226,9 @@ const OrgEditEvent = () => {
 						onChange={onInputChange}
 					>
 						<option value="" disabled hidden>Select event tag</option>
-						<option value="In-Person">In-Person</option>
+                        {tags.map(tag => (
+                            <option key={tag} value={tag}>{tag}</option>
+                        ))}
 					</select>
                     <label htmlFor="category">Event category</label>
 					<select

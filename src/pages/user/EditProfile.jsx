@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { updateUser } from '../../store/slices/userSlice';
 import api from '../../api';
 import sample_logo from '../../assets/user_profile.jpg'
+import { tags } from "../../utils/tags"
 
 const EditProfile = () => {
     const dispatch = useDispatch();
@@ -22,15 +23,21 @@ const EditProfile = () => {
         bio: user.bio,
         logo: "",
         gender: "",
-        branch: ""
+        branch: "",
+        interests: []
     });
 
-    const onInputChange = (e) => {
-        setUserData((prevUserData) => ({
-			...prevUserData,
-			[e.target.name]: e.target.value,
-		}));
-    }
+	const onInputChange = (e) => {
+        if (e.target.name === 'interests') {
+            if (userData.interests.includes(e.target.value)) {
+                setUserData((prevData) => ({ ...prevData, [e.target.name]: prevData.interests.filter(interest => interest !== e.target.value)}));
+            } else {
+                setUserData((prevData) => ({ ...prevData, [e.target.name]: [...prevData.interests, e.target.value]}));
+            }
+        } else {
+            setUserData((prevData) => ({ ...prevData, [e.target.name]: e.target.value}));
+        }
+	};
 
     const profileUpdateHandler = async () => {
         try {
@@ -80,6 +87,7 @@ const EditProfile = () => {
                 gender: data.user.gender ? data.user.gender : "",
                 branch: data.user.branch ? data.user.branch : "",
                 logo: data.user.logo ? data.user.logo.url : "",
+                interests: data.user.interests.length ? data.user.interests : []
             }));
 		};
 		fetchUserData();
@@ -148,6 +156,12 @@ const EditProfile = () => {
                         <option value="civil">CIVIL</option>
                         <option value="chem">CHEM</option>
                         <option value="biotech">BIOTECH</option>
+                    </select>
+                    <label htmlFor="interests">Interests</label>
+                    <select className='border-2 border-gray-300 px-3 py-2 rounded-lg' name="interests" id="interests" multiple value={userData.interests} onChange={onInputChange}>
+                        {tags.map(tag => (
+                            <option key={tag} value={tag}>{tag}</option>
+                        ))}
                     </select>
                 </div>
                 <button onClick={profileUpdateHandler} className='w-full px-3 py-2 bg-black text-white hover:bg-slate-900 rounded-lg'>Update</button>
