@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { UserData } from "./Data";
+import { EventData, UserData } from "./Data";
 import BarChart from '../../components/charts/BarChart';
 import LineChart from '../../components/charts/LineChart';
 import PieChart from '../../components/charts/PieChart';
@@ -24,16 +24,34 @@ const OrgAnalytics = () => {
             },
         ],
     });
+    const [eventData, setEventData] = useState({
+        labels: EventData.map((data) => data.category),
+        datasets: [
+            {
+                label: "Number of participants",
+                data: EventData.map((data) => data.participants),
+                backgroundColor: [
+                    "rgba(75,192,192,1)",
+                    "#ecf0f1",
+                    "#50AF95",
+                    "#f3ba2f",
+                    "#2a71d0",
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ]
+    })
     return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 items-center">
         <div className="w-96 m-auto">
-            <LineChart chartData={userData} />
+            <LineChart chartData={eventData} />
         </div>
         <div className="w-72 m-auto">
-            <PieChart chartData={userData} />
+            <PieChart chartData={eventData} />
         </div>
         <div className="w-96 m-auto">
-            <BarChart chartData={userData} />
+            <BarChart chartData={eventData} />
         </div>
         <div className="w-96 m-auto">
             <ScatterChart chartData={userData} />

@@ -30,3 +30,36 @@ export const UserData = [
 		userLost: 234,
 	},
 ];
+
+export const EventData = [
+	{
+		id: 1,
+		category: "Hackathon",
+		participants: 12,
+	},
+	{
+		id: 2,
+		category: "Workshop",
+		participants: 50,
+	},
+	{
+		id: 3,
+		category: "Contest",
+		participants: 24,
+	},
+	{
+		id: 4,
+		category: "Speaker Session",
+		participants: 36,
+	},
+	{
+		id: 5,
+		category: "Ideathon",
+		participants: 101,
+	},
+	{
+		id: 6,
+		category: "Bug Bounty",
+		participants: 174,
+	},
+];
