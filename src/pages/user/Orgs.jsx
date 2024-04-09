@@ -4,7 +4,6 @@ import { FiSearch } from "react-icons/fi";
 import api from "../../api";
 import sample_org_logo from "../../assets/org_sample_logo.png";
 
-
 const Orgs = () => {
 	const [orgList, setOrgList] = useState([]);
 	const [query, setQuery] = useState("");
@@ -16,6 +15,8 @@ const Orgs = () => {
 		};
 		fetchOrgList();
 	}, [query]);
+
+    if (!orgList.length) return <p>Loading...</p>
 
 	return (
 		<div className="w-full flex flex-col items-center p-4 space-y-6">
