@@ -209,6 +209,7 @@ const OrgCreateEvent = () => {
 						</option>
 						<option value="Info Session">Info Session</option>
 						<option value="Speaker Session">Speaker Session</option>
+                        <option value="Panel Discussion">Panel Discussion</option>
 						<option value="Workshop">Workshop</option>
 						<option value="Hackathon">Hackathon</option>
 						<option value="Bootcamp">Bootcamp</option>

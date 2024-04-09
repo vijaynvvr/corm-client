@@ -44,7 +44,6 @@ const EditProfile = () => {
                 else formData.append(key, userData[key]);
             }
             const {data} = await api.put('/user/update', formData);
-            console.log(data);
             if (data.success) {
                 toast.success(data.message);
                 dispatch(updateUser({ data: data.user }))

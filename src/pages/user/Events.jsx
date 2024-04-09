@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import EventCard from "../../components/EventCard";
 import api from "../../api";
+import sample_event_logo from "../../assets/event_sample_logo.jpeg";
 
 const Events = () => {
     const [query, setQuery] = useState('');
@@ -24,8 +25,8 @@ const Events = () => {
     if (!eventList.length) return <p>Loading...</p>
 
 	return (
-		<div className="w-full p-4 space-y-6">
-			<h1 className="text-4xl text-center">Events</h1>
+		<div className="w-full p-4 space-y-6 px-20">
+			{/* <h1 className="text-4xl text-center">Events</h1> */}
 			<div className="flex justify-center">
 				<input
 					type="text"
@@ -39,14 +40,14 @@ const Events = () => {
 				</button>
 			</div>
             {Object.keys(eventCategoryList).map(category => (
-                <>
-                    <h1 className="font-bold text-center">{category}</h1>
-                    <div className="flex flex-wrap justify-center gap-4">
+                <React.Fragment key={category}>
+                    <h1 className="font-bold">{category}</h1>
+                    <div className="flex flex-wrap gap-4">
                         {eventCategoryList[category].map(event => (
                             <EventCard
                                 key={event._id}
                                 id={event._id}
-                                img={event.logo.url}
+                                img={event.logo.url ? event.logo.url : sample_event_logo}
                                 title={event.title}
                                 category={event.category}
                                 organization={event.organizer.name}
@@ -55,7 +56,7 @@ const Events = () => {
                             />
                         ))}
                     </div>
-                </>
+                </React.Fragment>
             ))}
 		</div>
 	);

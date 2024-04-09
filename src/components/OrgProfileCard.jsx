@@ -5,7 +5,7 @@ import api from "../api";
 const OrgProfileCard = ({ id, path, orgName, fetchOrgList }) => {
     const unfollowOrg = async () => {
         try {
-            const { data } = await api.put(`/organization/unfollowOrg/${id}`);
+            const { data } = await api.put(`/organization/toggleFollow/${id}`);
             if (data.success) {
                 console.log("Organization unfollowed successfully");
                 fetchOrgList();

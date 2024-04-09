@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { FiUsers, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { TfiInfoAlt } from "react-icons/tfi";
+import sample_event_logo from "../assets/event_sample_logo.jpeg"
 
-const FeedEventCard = ({ id, img, title, organization, date, time }) => {
+const FeedEventCard = ({ id, logo, title, organizer, eventTime, createdAt }) => {
     const [like, setLike] = useState(false);
 	return (
 		<div className="w-fit flex flex-col sm:flex-row gap-4 items-center p-4 border border-gray-300 shadow-md hover:shadow-xl rounded-xl cursor-pointer">
 			<img
-				src={img}
+				src={logo ? logo : sample_event_logo}
 				alt={`${title}-img`}
 				className="w-48 h-48 rounded-full"
 			/>
@@ -17,16 +18,16 @@ const FeedEventCard = ({ id, img, title, organization, date, time }) => {
 				<h3 className="font-bold">{title}</h3>
 				<p className="flex items-center gap-2 text-base text-gray-600 hover:underline">
                     <FiUsers />
-                    <span>{organization}</span>
+                    <span>{organizer}</span>
                 </p>
 				<p className="flex justify-between text-sm text-gray-800">
                     <span className="flex items-center gap-2">
                         <FiCalendar /> 
-                        <span>{date}</span>
+                        <span>{eventTime}</span>
                     </span>
                     <span className="flex items-center gap-2">
                         <FiClock /> 
-                        <span>{time}</span>
+                        <span>{createdAt}</span>
                     </span>
                 </p>
                 <div className="flex pt-2">

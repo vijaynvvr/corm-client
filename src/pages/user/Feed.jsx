@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import event from "../../assets/HeroCard/event.jpg";
-import organization from "../../assets/HeroCard/organization.jpg";
-import opportunity from "../../assets/HeroCard/opportunity.jpg";
 import { useSelector } from "react-redux";
-
 import FeedEventCard from "../../components/FeedEventCard";
 
 const Feed = () => {
     const user = useSelector(store => store.user.data)
+    const [feed, setFeed] = useState(null);
 
     return (
 		<div className="w-full p-4 space-y-6 flex flex-col items-center">
@@ -15,44 +13,28 @@ const Feed = () => {
 			<div className="flex flex-col flex-grow-0 gap-4">
 				<FeedEventCard
                     id={1}
-					img={event}
+					logo={event}
 					title="Web Development Workshop"
-					organization="Google Developer Student Club"
-                    date="24 Mar, 2024"
-                    time="2 min ago"
+					organizer="Google Developer Student Club"
+                    eventTime="24 Mar, 2024"
+                    createdAt="2 min ago"
 				/>
 				<FeedEventCard
-                    id={2}
-					img={organization}
+                    id={1}
+					logo={event}
 					title="Web Development Workshop"
-					organization="Google Developer Student Club"
-                    date="12 May, 2024"
-                    time="2 min ago"
+					organizer="Google Developer Student Club"
+                    eventTime="24 Mar, 2024"
+                    createdAt="2 min ago"
 				/>
 				<FeedEventCard
-                    id={2}
-					img={opportunity}
+                    id={1}
+					logo={event}
 					title="Web Development Workshop"
-					organization="Google Developer Student Club"
-                    date="12 May, 2024"
-                    time="2 min ago"
+					organizer="Google Developer Student Club"
+                    eventTime="24 Mar, 2024"
+                    createdAt="2 min ago"
 				/>
-				{/*<FeedEventCard
-                    id={2}
-					img={organization}
-					title="Web Development Workshop"
-					organization="Google Developer Student Club"
-                    date="12 May, 2024"
-                    time="2 min ago"
-				/>
-				<FeedEventCard
-                    id={2}
-					img={organization}
-					title="Web Development Workshop"
-					organization="Google Developer Student Club"
-                    date="12 May, 2024"
-                    time="2 min ago"
-				/> */}
 			</div>
 		</div>
 	);

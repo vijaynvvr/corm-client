@@ -22,7 +22,7 @@ const Header = ({ open, setOpen }) => {
 
 	return (
 		<div className="h-[63px]">
-			<ul className="w-screen px-4 py-2 flex font-medium justify-between bg-white items-center fixed top-0 z-50 shadow-lg">
+			<ul className="w-screen px-4 py-2 flex font-medium justify-between bg-white items-center fixed top-0 z-40 shadow-lg">
 				<div className="flex items-center gap-3">
 					{loginStatus ? (
                         <>

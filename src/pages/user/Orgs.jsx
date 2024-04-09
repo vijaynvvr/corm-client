@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import OrgCard from "../../components/OrgCard";
 import { FiSearch } from "react-icons/fi";
 import api from "../../api";
+import sample_org_logo from "../../assets/org_sample_logo.png";
+
 
 const Orgs = () => {
 	const [orgList, setOrgList] = useState([]);
@@ -36,7 +38,7 @@ const Orgs = () => {
 						<OrgCard
 							key={org._id}
 							id={org._id}
-							path={org.logo.url}
+							logo={org.logo.url ? org.logo.url : sample_org_logo}
 							orgName={org.name}
 							about={org.about}
 						/>

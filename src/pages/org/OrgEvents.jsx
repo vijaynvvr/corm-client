@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { IoAddCircleOutline } from "react-icons/io5";
 import api from "../../api";
 
-
 const OrgEvents = () => {
     const [eventState, setEventState] = useState("all");
     const activeOrg = useSelector(store => store.user.activeOrg);
@@ -35,8 +34,6 @@ const OrgEvents = () => {
         filterEvents();
     }, [eventState]);
 
-    if (!eventList.length) return <p>Loading...</p>
-
 	return (
 		<div className="w-full p-4 space-y-4 flex flex-col">
             <div className="flex flex-row-reverse justify-between items-center px-1">
@@ -55,12 +52,7 @@ const OrgEvents = () => {
                     filteredEventList.map(event => (
                         <OrgEventCard
                             key={event._id}
-                            id={event._id}
-                            img={event.logo.url}
-                            title={event.title}
-                            organization={event.organizer.name}
-                            date={event.eventTime}
-                            time={event.createdAt}
+                            eventData={event}
                         />
                     ))
                 ) : (

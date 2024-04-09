@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import EventCard from '../../components/EventCard';
 import ProfileCard from '../../components/ProfileCard';
 import { useLocation  } from 'react-router-dom';
 import api from '../../api';
-import sample_logo from '../../assets/user_profile.jpg';
+import sample_profile_logo from '../../assets/user_profile.jpg';
+import sample_org_logo from '../../assets/org_sample_logo.png';
+
 
 const OrgDetail = () => {
     const location = useLocation();
@@ -13,28 +16,29 @@ const OrgDetail = () => {
         previous: [],
         upcoming: []
     })
+    const [isFollowing, setIsFollowing] = useState(false);
 
-    const followOrg = async () => {
+    const toggleFollow = async () => {
         try {
-            const { data } = await api.put(`/organization/followOrg/${orgId}`);
+            const { data } = await api.put(`/organization/toggleFollow/${orgId}`);
             if (data.success) {
-                console.log("Organization followed successfully");
                 fetchOrgData();
             } else {
                 console.error(data.message);
             }
         } catch (error) {
-            console.error("Unable to follow organization:", error);
+            console.error("Unable to follow/unfollow organization:", error);
         }
     };
 
     const fetchOrgData = async () => {
         const {data} = await api.get(`/organization/getPortfolio/${orgId}`);
         setOrgData(data.org);
+        setIsFollowing(data.isFollowing);
         if (data.org?.events.length) {
             setEvents({
-                previous: data.org.events.filter(event => new Date(event.eventTime).getTime() < Date.now()),
-                upcoming: data.org.events.filter(event => new Date(event.eventTime).getTime() > Date.now())
+                previous: data.org.events.filter(event => new Date(event.eventTime) < new Date()),
+                upcoming: data.org.events.filter(event => new Date(event.eventTime) > new Date())
             })
         }
     }
@@ -52,11 +56,15 @@ const OrgDetail = () => {
                     <h3 className="font-bold text-2xl md:text-3xl">{orgData.name}</h3>
                     <p className='text-base md:text-lg'>{orgData.about}</p>
                 </div>
-                <img src={orgData.logo.url} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
+                <img src={orgData.logo.url ? orgData.logo.url : sample_org_logo} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
             </div>
             <div className='w-10/12 text-center space-x-4'>
-                <button onClick={followOrg} className='bg-blue-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-blue-600'>Follow</button>
-                <button className='bg-gray-500 text-white px-4 py-2 rounded-lg border-2  hover:bg-gray-600'>Contact</button>
+                <button onClick={toggleFollow} className={`${isFollowing ? 'bg-gray-500 hover:bg-gray-600' : 'bg-blue-500 hover:bg-blue-600'} text-white px-4 py-2 rounded-lg border-2 `}>
+                    {isFollowing ? 'Unfollow' : 'Follow'}
+                </button>
+                <button className='bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg border-2'>
+                    <Link to={`mailto:${orgData.president.email}`}>Contact</Link>
+                </button>
             </div>
             <div className='w-10/12 space-y-2 text-base'>
                 <h1 className='text-2xl font-semibold'>Organization Info</h1>
@@ -126,7 +134,7 @@ const OrgDetail = () => {
             <div className='w-10/12 space-y-4'>
                 <h1 className='text-2xl font-semibold'>Team Members</h1>
                 <div className="flex flex-wrap gap-4">
-                    <ProfileCard logo={orgData.president.logo.url ? orgData.president.logo.url : sample_logo} name={orgData.president.firstName}/>
+                    <ProfileCard logo={orgData.president.logo ? orgData.president.logo.url : sample_profile_logo} name={orgData.president.firstName}/>
                 </div>
             </div>
         </div>

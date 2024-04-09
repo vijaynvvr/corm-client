@@ -4,6 +4,9 @@ import ProfileCard from '../../components/ProfileCard';
 import { useLocation  } from 'react-router-dom';
 import api from "../../api";
 import sample_logo from "../../assets/user_profile.jpg";
+import sample_event_logo from "../../assets/event_sample_logo.jpeg";
+import sample_org_logo from "../../assets/org_sample_logo.png";
+
 
 const OrgPortfolio = () => {
     const location = useLocation();
@@ -41,7 +44,7 @@ const OrgPortfolio = () => {
 					</p>
 				</div>
 				<img
-					src={orgData.logo.url}
+					src={orgData.logo.url ? orgData.logo.url : sample_org_logo}
 					alt="event-img"
 					className="w-full md:w-5/12 h-64 rounded-lg"
 				></img>
@@ -87,7 +90,7 @@ const OrgPortfolio = () => {
                             <EventCard
                                 key={event._id}
                                 id={event._id}
-                                img={event.logo.url}
+                                img={event.logo.url ? event.logo.url : sample_event_logo}
                                 title={event.title}
                                 category={event.category}
                                 organization={orgData.name}
@@ -108,7 +111,7 @@ const OrgPortfolio = () => {
                             <EventCard
                                 key={event._id}
                                 id={event._id}
-                                img={event.logo.url}
+                                img={event.logo.url ? event.logo.url : sample_event_logo}
                                 title={event.title}
                                 category={event.category}
                                 organization={orgData.name}
@@ -124,7 +127,7 @@ const OrgPortfolio = () => {
 			<div className="w-10/12 space-y-4">
 				<h1 className="text-2xl font-semibold">Team Members</h1>
 				<div className="flex flex-wrap gap-4">
-                    <ProfileCard logo={orgData.president.logo.url ? orgData.president.logo.url : sample_logo} name={orgData.president.firstName}/>
+                    <ProfileCard logo={orgData.president.logo ? orgData.president.logo.url : sample_logo} name={orgData.president.firstName}/>
 				</div>
 			</div>
 		</div>

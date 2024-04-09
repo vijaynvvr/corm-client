@@ -23,8 +23,6 @@ const OrgSettings = () => {
 		type: activeOrg.type,
 	});
 
-    console.log(organizationData.type);
-
 	const onInputChange = (e) => {
 		setOrganizationData((prevOrgData) => ({
 			...prevOrgData,
@@ -46,9 +44,8 @@ const OrgSettings = () => {
 			}
 			const formData = new FormData();
 			for (const key in organizationData) {
-				if (key === "logo" && logoPreview.edited)
-					formData.append(key, organizationData[key]);
-				else formData.append(key, organizationData[key]);
+				if (key === "logo" && !logoPreview.edited) continue;
+				formData.append(key, organizationData[key]);
 			}
 			const { data } = await api.put(
 				`/organization/update/${activeOrg._id}`,
@@ -104,12 +101,6 @@ const OrgSettings = () => {
 											: sample_logo,
 										edited: false,
 									});
-									setOrganizationData((prevOrgData) => ({
-										...prevOrgData,
-										logo: activeOrg.logo.url
-											? activeOrg.logo.url
-											: sample_logo,
-									}));
 								}}
 							>
 								<IoRemoveCircleOutline className="text-red-500 text-4xl" />
