@@ -9,25 +9,25 @@ export const timeAgo = (dateString) => {
     const now = new Date();
     const seconds = Math.floor((now - date) / 1000);
 
-    let interval = Math.floor(seconds / 31536000);
+    let interval = (seconds / 31536000);
     if (interval > 1) {
-        return `${interval} years ago`;
+        return `${Math.floor(interval)} year${Math.floor(interval) === 1 ? '' : 's'} ago`;
     }
-    interval = Math.floor(seconds / 2592000);
+    interval = (seconds / 2592000);
     if (interval > 1) {
-        return `${interval} months ago`;
+        return `${Math.floor(interval)} month${Math.floor(interval) === 1 ? '' : 's'} ago`;
     }
-    interval = Math.floor(seconds / 86400);
+    interval = (seconds / 86400);
     if (interval > 1) {
-        return `${interval} days ago`;
+        return `${Math.floor(interval)} day${Math.floor(interval) === 1 ? '' : 's'} ago`;
     }
-    interval = Math.floor(seconds / 3600);
+    interval = (seconds / 3600);
     if (interval > 1) {
-        return `${interval} hours ago`;
+        return `${Math.floor(interval)} hour${Math.floor(interval) === 1 ? '' : 's'} ago`;
     }
-    interval = Math.floor(seconds / 60);
+    interval = (seconds / 60);
     if (interval > 1) {
-        return `${interval} mins ago`;
+        return `${Math.floor(interval)} min${Math.floor(interval) === 1 ? '' : 's'} ago`;
     }
-    return `${Math.floor(seconds)} secs ago`;
+    return `${Math.floor(seconds)} sec${Math.floor(seconds) === 1 ? '' : 's'} ago`;
 }

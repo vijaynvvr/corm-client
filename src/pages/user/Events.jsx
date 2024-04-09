@@ -25,7 +25,7 @@ const Events = () => {
     if (!eventList.length) return <p>Loading...</p>
 
 	return (
-		<div className="w-full p-4 space-y-6 px-20">
+		<div className="w-full py-4 space-y-6 px-12">
 			{/* <h1 className="text-4xl text-center">Events</h1> */}
 			<div className="flex justify-center">
 				<input
