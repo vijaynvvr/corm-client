@@ -18,6 +18,7 @@ const OrgAnalytics = () => {
                     "#50AF95",
                     "#f3ba2f",
                     "#2a71d0",
+                    "#2a71e0",
                 ],
                 borderColor: "black",
                 borderWidth: 2,
