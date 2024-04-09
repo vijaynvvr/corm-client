@@ -11,7 +11,7 @@ const OrgCard = ({ id, logo, orgName, about }) => {
 			/>
 			<div className="space-y-2 p-2">
 				<h1 className="font-bold">{orgName}</h1>
-				<p className="text-base text-gray-600">{about}</p>
+				<p className="text-base text-gray-600">{about.slice(0, 250)}...</p>
 			</div>
 		</Link>
 	);

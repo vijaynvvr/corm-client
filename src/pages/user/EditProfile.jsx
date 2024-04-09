@@ -115,7 +115,7 @@ const EditProfile = () => {
                         </>
                     )}
                     {!logoPreview.edited && (
-                        <img src={logoPreview.image} alt="Sample Image" className="w-full h-full object-cover rounded-full" />
+                        <img src={logoPreview.image ? logoPreview.image : sample_logo} alt="Sample Image" className="w-full h-full object-cover rounded-full" />
                     )}
                 </div>
                 <div className='flex flex-col gap-2'>
