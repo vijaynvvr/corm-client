@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import event from "../../assets/HeroCard/event.jpg";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FeedEventCard from "../../components/FeedEventCard";
-import { useEffect } from "react";
+import api from "../../api";
 
 const Feed = () => {
     const user = useSelector(store => store.user.data)

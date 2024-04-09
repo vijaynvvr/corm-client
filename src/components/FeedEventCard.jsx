@@ -15,7 +15,7 @@ const FeedEventCard = ({ id, logo, title, organizer, eventTime, createdAt }) => 
 				alt={`${title}-img`}
 				className="w-48 h-48 rounded-full"
 			/>
-			<div className="p-4 space-y-3 rounded-b-xl">
+			<div className="w-72 p-4 space-y-3 rounded-b-xl">
 				<h3 className="font-bold">{title}</h3>
 				<p className="flex items-center gap-2 text-base text-gray-600 hover:underline">
                     <FiUsers />
