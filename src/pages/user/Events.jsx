@@ -8,6 +8,7 @@ const Events = () => {
     const [query, setQuery] = useState('');
     const [eventList, setEventList] = useState([]);
     const [eventCategoryList, setEventCategoryList] = useState({});
+    const [timer, setTimer] = useState(null);
 
     useEffect(() => {
         const fetchEventList = async () => {
@@ -19,7 +20,21 @@ const Events = () => {
                 return acc;
             }, {}))
         }
-        fetchEventList();
+        // fetchEventList();
+
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        const debounceTimer = setTimeout(() => {
+            fetchEventList();
+        }, 300);
+
+        setTimer(debounceTimer);
+
+        return () => {
+            clearTimeout(debounceTimer);
+        };
     }, [query]);
 
     if (!eventList.length) return <p>Loading...</p>
