@@ -4,7 +4,7 @@ import { FiUsers, FiMapPin, FiCalendar, FiClock } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 import { IoSaveOutline, IoSaveSharp } from "react-icons/io5";
 import api from '../../api';
-import { formatDate, timeAgo } from '../../utils/date_time_format';
+import { formatDateTime, timeAgo } from '../../utils/date_time_format';
 import sample_event_logo from '../../assets/event_sample_logo.jpeg';
 
 const EventDetail = () => {
@@ -69,7 +69,7 @@ const EventDetail = () => {
                     </span>
                     <span className="flex items-center gap-2">
                         <FiCalendar className='text-gray-800'/> 
-                        <span><span className='text-black'>on</span> {formatDate(eventData.eventTime)}</span>
+                        <span><span className='text-black'>on</span> {formatDateTime(eventData.eventTime)}</span>
                     </span>
                     <span className="flex items-center gap-2">
                         <FiClock className='text-gray-800'/> 

@@ -25,7 +25,7 @@ const OrgEventCard = ({ eventData }) => {
                 />
                 <div className="p-4 space-y-3 rounded-b-xl">
                     <h3 className="font-bold">{eventData.title}</h3>
-                    <p className="flex items-center gap-2 text-base text-gray-600 hover:underline">
+                    <p className="flex items-center gap-2 text-base text-gray-600">
                         <FiUsers />
                         <span>{eventData.organizer.name}</span>
                     </p>

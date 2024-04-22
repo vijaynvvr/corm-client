@@ -81,7 +81,7 @@ const EditProfile = () => {
 
     useEffect(() => {
 		const fetchUserData = async () => {
-            const { data } = await api.get(`/user/fetchDetails`);
+            const { data } = await api.get(`/user/fetchDetails/${user.id}`);
 			setUserData(prevUserData => ({
                 ...prevUserData,
                 gender: data.user.gender ? data.user.gender : "",

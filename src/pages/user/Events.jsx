@@ -13,8 +13,9 @@ const Events = () => {
     useEffect(() => {
         const fetchEventList = async () => {
             const { data } = await api.get(`/event/fetchAllEvents${query ? `?title=${query}` : ''}`);
-            setEventList(data.events);
-            setEventCategoryList(data.events.reduce((acc, event) => {
+            const activeEvents = data.events.filter(event => (new Date(event.eventTime) > new Date()))
+            setEventList(activeEvents);
+            setEventCategoryList(activeEvents.reduce((acc, event) => {
                 if (acc.hasOwnProperty(event.category)) acc[event.category].push(event);
                 else acc[event.category] = [event];
                 return acc;

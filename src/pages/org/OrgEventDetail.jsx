@@ -2,9 +2,8 @@ import React, { useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { useLocation  } from 'react-router-dom';
-import { formatDate, timeAgo } from '../../utils/date_time_format';
-import { FiUsers, FiMapPin, FiCalendar, FiClock } from "react-icons/fi";
-import { FiDelete, FiList } from "react-icons/fi";
+import { formatDateTime, timeAgo } from '../../utils/date_time_format';
+import { FiUsers, FiMapPin, FiCalendar, FiClock, FiDelete, FiList } from "react-icons/fi";
 import DeleteEventModal from "../../components/DeleteEventModal";
 import api from '../../api';
 import sample_event_logo from "../../assets/event_sample_logo.jpeg";
@@ -33,7 +32,7 @@ const OrgEventDetail = () => {
                 <img src={eventData.logo.url ? eventData.logo.url : sample_event_logo} alt='event-img' className='w-full md:w-5/12 h-64 rounded-lg'></img>
                 <div className="w-full md:w-7/12 py-4 md:p-4 space-y-2 rounded-b-xl text-gray-600">
                     <h3 className="font-bold text-3xl">{eventData.title}</h3>
-                    <p className="flex items-center gap-2 text-xl hover:underline">
+                    <p className="flex items-center gap-2 text-xl">
                         <FiUsers className='text-gray-800'/>
                         <span><span className='text-black'>by</span> {eventData.organizer.name}</span>
                     </p>
@@ -43,7 +42,7 @@ const OrgEventDetail = () => {
                     </span>
                     <span className="flex items-center gap-2">
                         <FiCalendar className='text-gray-800'/> 
-                        <span><span className='text-black'>on</span> {formatDate(eventData.eventTime)}</span>
+                        <span><span className='text-black'>on</span> {formatDateTime(eventData.eventTime)}</span>
                     </span>
                     <span className="flex items-center gap-2">
                         <FiClock className='text-gray-800'/> 

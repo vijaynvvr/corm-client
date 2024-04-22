@@ -61,7 +61,7 @@ const OrgPortfolio = () => {
 								Followers
 							</th>
 							<th className="py-2 border-b border-gray-400">
-								Team Members
+								Members
 							</th>
 							<th className="py-2 border-b border-gray-400">
 								Events

@@ -21,13 +21,13 @@ const EventCard = ({ id, img, title, category, organization, date, time }) => {
                     <BiCategory />
                     <span>{category}</span>
                 </p>
-				<p className="flex items-center gap-2 text-base text-gray-600 hover:underline">
+				<p className="flex items-center gap-2 text-base text-gray-600">
                     <FiUsers />
                     <span>{organization}</span>
                 </p>
                 <p className="flex justify-between text-sm text-gray-800">
                     <span className="flex items-center gap-2">
-                        <FiCalendar /> 
+                        <FiCalendar />
                         <span>{formatDate(date)}</span>
                     </span>
                     <span className="flex items-center gap-2">
@@ -35,10 +35,10 @@ const EventCard = ({ id, img, title, category, organization, date, time }) => {
                         <span>{timeAgo(time)}</span>
                     </span>
                 </p>
-                    <Link to={activeOrg ? `/org_profile/${activeOrg._id}/events/${id}` : `/events/${id}`} className="w-full flex justify-center items-center gap-3 text-lg border-2 rounded-lg hover:bg-yellow-100">
-                        <TfiInfoAlt className="text-yellow-500"/>
-                        <span>Visit</span>
-                    </Link>
+                <Link to={activeOrg ? `/org_profile/${activeOrg._id}/events/${id}` : `/events/${id}`} className="w-full flex justify-center items-center gap-3 text-lg border-2 rounded-lg hover:bg-yellow-100">
+                    <TfiInfoAlt className="text-yellow-500"/>
+                    <span>Visit</span>
+                </Link>
 			</div>
 		</div>
 	);
