@@ -1,62 +1,108 @@
-import React, { useState } from 'react'
-import { EventData, UserData } from "./Data";
+import React from 'react'
+import { ParticipantDistribution, LikedEvents, OrgVisits, FollowersGained } from "./Data";
 import BarChart from '../../components/charts/BarChart';
 import LineChart from '../../components/charts/LineChart';
 import PieChart from '../../components/charts/PieChart';
 import ScatterChart from '../../components/charts/ScatterChart';
 
 const OrgAnalytics = () => {
-    const [userData, setUserData] = useState({
-        labels: UserData.map((data) => data.year),
-        datasets: [
-            {
-                label: "Users Gained",
-                data: UserData.map((data) => data.userGain),
-                backgroundColor: [
-                    "rgba(75,192,192,1)",
-                    "#ecf0f1",
-                    "#50AF95",
-                    "#f3ba2f",
-                    "#2a71d0",
-                    "#2a71e0",
-                ],
-                borderColor: "black",
-                borderWidth: 2,
-            },
-        ],
-    });
-    const [eventData, setEventData] = useState({
-        labels: EventData.map((data) => data.category),
+    const PD = {
+        labels: ParticipantDistribution.map((data) => data.category),
         datasets: [
             {
                 label: "Number of participants",
-                data: EventData.map((data) => data.participants),
+                data: ParticipantDistribution.map((data) => data.participants),
                 backgroundColor: [
-                    "red",
+                    "violet",
+                    "indigo",
                     "blue",
                     "green",
                     "yellow",
-                    "violet",
                     "orange",
+                    "red"
                 ],
                 borderColor: "black",
                 borderWidth: 2,
             },
         ]
-    })
+    }
+
+    const LE = {
+        labels: LikedEvents.map((data) => data.category),
+        datasets: [
+            {
+                label: "Number of likes",
+                data: LikedEvents.map((data) => data.likes),
+                backgroundColor: [
+                    "violet",
+                    "indigo",
+                    "blue",
+                    "green",
+                    "yellow",
+                    "orange",
+                    "red"
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ]
+    }
+
+    const OV = {
+        labels: OrgVisits.map((data) => data.day),
+        datasets: [
+            {
+                label: "Organization visits",
+                data: OrgVisits.map((data) => data.visits),
+                backgroundColor: [
+                    "violet",
+                    "indigo",
+                    "blue",
+                    "green",
+                    "yellow",
+                    "orange",
+                    "red"
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ]
+    }
+
+    const FG = {
+        labels: FollowersGained.map((data) => data.year),
+        datasets: [
+            {
+                label: "Followers Gained",
+                data: FollowersGained.map((data) => data.followersGained),
+                backgroundColor: [
+                    "violet",
+                    "indigo",
+                    "blue",
+                    "green",
+                    "yellow",
+                    "orange",
+                    "red"
+                ],
+                borderColor: "black",
+                borderWidth: 2,
+            },
+        ]
+    }
+
     return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 items-center">
         <div className="w-96 m-auto">
-            <LineChart chartData={eventData} />
+            <LineChart chartData={OV} />
         </div>
         <div className="w-72 m-auto">
-            <PieChart chartData={eventData} />
+            <PieChart chartData={PD} />
         </div>
         <div className="w-96 m-auto">
-            <BarChart chartData={eventData} />
+            <BarChart chartData={LE} />
         </div>
         <div className="w-96 m-auto">
-            <ScatterChart chartData={userData} />
+            <ScatterChart chartData={FG} />
         </div>
     </div>
     )
