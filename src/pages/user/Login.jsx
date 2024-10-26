@@ -14,6 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 	const [userData, setUserData] = useState(INITIAL_USER_DATA);
+    const [isLoading, setIsLoading] = useState(false);
 
 	const onInputChange = (e) => {
 		setUserData((prevUserData) => ({
@@ -33,7 +34,9 @@ const Login = () => {
                 toast.error('Please fill in all fields');
                 return;
             }
-            
+
+            setIsLoading(true);
+
             const {data} = await api.post(`/user/signin`, userData);
     
             if (data.success) {
@@ -47,6 +50,8 @@ const Login = () => {
             }
         } catch (err) {
             toast.error(err.response.data.message);
+        } finally {
+            setIsLoading(false);
         }
     };
     
@@ -65,7 +70,12 @@ const Login = () => {
                 <label htmlFor="password">Password</label>
                 <input value={userData.password} onChange={onInputChange} className='border-2 border-gray-300 px-3 py-2 rounded-lg' type="password" name="password" id="password" placeholder='Enter your password'/>
             </div>
-            <button onClick={handleLogin} className='w-full px-3 py-2 bg-black text-white hover:bg-slate-900 rounded-lg'>Login</button>
+            <button
+                onClick={!isLoading ? handleLogin : undefined}
+                className={`w-full px-3 py-2 ${isLoading ? 'bg-slate-500 cursor-wait' : 'bg-black hover:bg-slate-900'} text-white rounded-lg`} 
+            >
+                Login
+            </button>
             <p className='text-base text-center text-gray-500'>Don't have an account? <Link to="/register" className='ml-1 hover:text-black hover:underline'>Register Now</Link></p>
         </div>
     </div>

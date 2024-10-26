@@ -14,6 +14,7 @@ const INITIAL_USER_DATA = {
 const Register = () => {
     const navigate = useNavigate();
 	const [userData, setUserData] = useState(INITIAL_USER_DATA);
+    const [isLoading, setIsLoading] = useState(false);
 
 	const onInputChange = (e) => {
 		setUserData((prevUserData) => ({
@@ -38,6 +39,8 @@ const Register = () => {
                 toast.error('Please fill in all fields');
                 return;
             }
+
+            setIsLoading(true);
     
             const {data} = await api.post(`/user/signup`, userData);
     
@@ -49,6 +52,8 @@ const Register = () => {
             }
         } catch (err) {
             toast.error(err.response.data.message);
+        } finally {
+            setIsLoading(false);
         }
     };
     
@@ -107,8 +112,8 @@ const Register = () => {
 					/>
 				</div>
 				<button
-					onClick={handleRegister}
-					className="w-full px-3 py-2 bg-black text-white hover:bg-slate-900 rounded-lg"
+					onClick={!isLoading ? handleRegister : undefined}
+                    className={`w-full px-3 py-2 ${isLoading ? 'bg-slate-500 cursor-wait' : 'bg-black hover:bg-slate-900'} text-white rounded-lg`} 
 				>
 					Register
 				</button>
