@@ -48,3 +48,22 @@ export const timeAgo = (dateString) => {
     }
     return `${Math.floor(seconds)} sec${Math.floor(seconds) === 1 ? '' : 's'} ago`;
 }
+
+/**
+ * Converts a Date or string to ISO format (YYYY-MM-DDTHH:mm:ss.sssZ)
+ */
+export function toISO(date: Date | string): string {
+  return new Date(date).toISOString();
+}
+
+
+/**
+ * Gets a human-readable datetime string (e.g., "July 20, 2025, 14:35")
+ */
+export function formatReadable(date: Date | string): string {
+  const d = new Date(date);
+  return d.toLocaleString(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  });
+}
